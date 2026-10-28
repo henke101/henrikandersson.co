@@ -8,7 +8,7 @@
 <title>Rebuilding traffic accident reporting for the Swedish Police</title>
 <style>
 
-  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;--placeholder:#ededed;}
+  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;}
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:#fff;color:var(--ink);
@@ -19,12 +19,7 @@
   li:last-child{margin-bottom:0}
   .item{font-weight:600;font-size:19px;line-height:1.45;display:block}
   .note{display:block;margin-top:.3rem;color:var(--ink-soft)}
-  .ph{background:var(--placeholder);display:flex;align-items:center;justify-content:center;
-    color:#9a9a9a;font-size:.8125rem;text-align:center;padding:1rem;}
-  .ph.phone{aspect-ratio:828/1792}
   .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-  /* Device frame. The crops are mid-page slices, so no notch or home
-     indicator is drawn — they would sit on top of real UI. */
   .device{
     position:relative;
     background:#111;
@@ -39,8 +34,6 @@
       overflow-x:auto;gap:.75rem;padding-bottom:.5rem}
     .shots .device{width:58vw;flex:0 0 auto}
   }
-  .ph.wide{aspect-ratio:2186/776}
-  .ph.proto{aspect-ratio:3264/1704}
   figure img{display:block;width:100%;height:auto}
   .shots img{width:100%;height:auto}
   figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint)}
@@ -78,7 +71,6 @@
   ul.dots li::marker{color:var(--ink-faint)}
   figure{margin:2.5rem 0}
   @media (min-width:1100px){figure{margin-right:-6rem}}
-  .ph.phone{max-width:15rem}
   @media (max-width:860px){
     .wrap{display:block;padding-top:2.5rem}
     aside{position:static;margin-bottom:3.5rem}
@@ -129,7 +121,7 @@
     <div class="device"><div class="screen"><img src="img/flow-2.png" alt="Accident circumstances, followed by speed limit pickers for each street."></div></div>
     <div class="device"><div class="screen"><img src="img/flow-3.png" alt="The accident sketch, the parties involved, and the description field, ending in the send button."></div></div>
   </div>
-  <figcaption>The finished flow — everything on one page. [placeholder caption]</figcaption>
+  <figcaption>The finished flow — everything on one page.</figcaption>
 </figure>
 <h2 id="goals">Defining goals and scope</h2>
 <p>I set up a forum with experts from each role that handled the data — officers, caseworkers and statistics handlers — to help set the scope and for continuous communication throughout the work.</p>
@@ -160,13 +152,13 @@
     <figure><img src="img/prototype.png" alt="Four lo-fi prototype screens in Comic Sans, showing vehicles and people as separate nested views."><figcaption>The lo-fi prototype was iterated until it looked clearly unfinished. Before that, people assumed they were being shown a finished product and leaned towards "it's fine as it is" instead of saying what they actually thought.</figcaption></figure>
   </li>
   <li><span class="item">Standard iOS pickers, across the whole app</span><span class="note">Most inherited single-choice pickers made users navigate into a separate view and back out again. My flow had to stay consistent with the rest of the app, so rather than accept the pattern I started an initiative to replace all of them app-wide, and worked it through with the host team's designers and developers.</span>
-    <figure><img src="img/picker.png" alt="A row with an inline chevron picker above a row that navigates into a separate view."><figcaption>The standard inline picker, next to a row that still navigates into a separate view. [placeholder caption]</figcaption></figure>
+    <figure><img src="img/picker.png" alt="A row with an inline chevron picker above a row that navigates into a separate view."><figcaption>The standard inline picker, next to a row that still navigates into a separate view.</figcaption></figure>
   </li>
   <li><span class="item">Rename fields to state clearly what the info is for</span>
     <figure><img src="img/description.png" alt="The renamed accident description field, labelled for the statistics database."><figcaption>The previous name Händelseförlopp (Sequence of events), was only for statistics but interpreted by most users as input for further casework, which led to the wrong information being input.</figcaption></figure>
   </li>
   <li><span class="item">Animal accidents as one of the few exceptions of the flat hierarchy</span><span class="note">According to the traffic accident data animals are rarely reported and the components took up a lot of space.</span>
-    <figure><img src="img/djur.png" alt="A single row showing the number of animals involved, which opens a separate view."><figcaption>Animals kept as one navigate-in row. [placeholder caption]</figcaption></figure>
+    <figure><img src="img/djur.png" alt="A single row showing the number of animals involved, which opens a separate view."><figcaption>Animals kept as one navigate-in row.</figcaption></figure>
   </li>
 </ul>
 
