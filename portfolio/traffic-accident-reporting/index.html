@@ -19,23 +19,7 @@
   li:last-child{margin-bottom:0}
   .item{font-weight:600;font-size:19px;line-height:1.45;display:block}
   .note{display:block;margin-top:.3rem;color:var(--ink-soft)}
-  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-  .device{
-    position:relative;
-    background:#111;
-    padding:7px;
-    border-radius:30px;
-    box-shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.14);
-  }
-  .screen{position:relative;overflow:hidden;border-radius:23px}
-  .device img{display:block;width:100%;height:auto}
-  @media (max-width:560px){
-    .shots{grid-auto-flow:column;grid-template-columns:none;
-      overflow-x:auto;gap:.75rem;padding-bottom:.5rem}
-    .shots .device{width:58vw;flex:0 0 auto}
-  }
   figure img{display:block;width:100%;height:auto}
-  .shots img{width:100%;height:auto}
   figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint)}
   .back{font-size:.9375rem;color:var(--ink-soft);
     text-decoration:underline;text-decoration-color:#bbb;
@@ -60,8 +44,8 @@
     text-underline-offset:3px;text-decoration-thickness:1px}
   nav a:hover{color:var(--ink);text-decoration-color:var(--ink)}
   h1{font-size:2.375rem;line-height:1.14;letter-spacing:-.02em;font-weight:700;margin:0 0 1rem}
-  .disclosure{color:#c2410c;font-size:1rem;font-weight:500;
-    line-height:1.4;letter-spacing:-.008em;margin:0 0 2rem}
+  .disclosure{color:var(--ink);font-size:1rem;font-weight:700;
+    line-height:1.45;margin:1.75rem 0 2.75rem}
   .intro{font-size:1.125rem;line-height:1.55;color:var(--ink-soft);margin:0 0 1.1rem}
   .intro.lead{color:var(--ink)}
   h2{font-size:1.625rem;line-height:1.22;letter-spacing:-.015em;font-weight:700;margin:4.25rem 0 1.35rem}
@@ -105,7 +89,7 @@
   </aside>
   <main>
 <h1>Rebuilding traffic accident reporting for the Swedish Police</h1>
-<p class="disclosure">All screens contain test data only — no real people, vehicles or cases. Nothing shown is confidential.</p>
+<p class="disclosure">Note: All screens contain test data only — no real people, vehicles or cases. Nothing shown is confidential.</p>
 <p class="intro lead">I led the work for rebuilding the flow of reporting traffic accidents on the scene. From setting scope to designing possible solutions and leading the work of implementation through two cross-functional teams.</p>
 
 <h2 id="problem">Problem</h2>
@@ -116,11 +100,7 @@
 <p>Officers reported the new flow as much faster and easier. Caseworkers reported the new app's output as easier to work with. Statistics handlers reported no noticeable change.</p>
 
 <figure>
-  <div class="shots">
-    <div class="device"><div class="screen"><img src="img/flow-1.png" alt="Vehicles listed with the people involved nested under each one."></div></div>
-    <div class="device"><div class="screen"><img src="img/flow-2.png" alt="Accident circumstances, followed by speed limit pickers for each street."></div></div>
-    <div class="device"><div class="screen"><img src="img/flow-3.png" alt="The accident sketch, the parties involved, and the description field, ending in the send button."></div></div>
-  </div>
+  <img src="img/flow-strip.png" alt="Three screens from the finished reporting flow: vehicles with the people involved, accident circumstances, and the sketch with the description field.">
   <figcaption>The finished flow — everything on one page.</figcaption>
 </figure>
 <h2 id="goals">Defining goals and scope</h2>
