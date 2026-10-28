@@ -21,8 +21,11 @@
 
   .card{display:block;text-decoration:none;color:inherit;position:relative;isolation:isolate;
     -webkit-user-select:none;user-select:none}
-  .collage{position:relative;overflow:hidden;border-radius:22px;background:var(--tint)}
-  .collage img{display:block;width:100%;height:auto;transition:filter .35s ease}
+  .collage{position:relative;overflow:hidden;background:var(--tint);
+    border-radius:22px;
+    clip-path:inset(0 round 22px);   /* Safari drops overflow clipping on filtered children */
+  }
+  .collage img{display:block;width:100%;height:auto;border-radius:22px;transition:filter .35s ease}
 
   .meta{padding:1.5rem .25rem 0}
   .title{font-size:1.625rem;line-height:1.25;letter-spacing:-.012em;font-weight:700;margin:0 0 1rem}
@@ -39,7 +42,7 @@
       filter:blur(24px);opacity:1;
     }
     .collage::after{
-      content:"";position:absolute;inset:0;background:#eef3f8;z-index:2;
+      content:"";position:absolute;inset:0;background:#eef3f8;z-index:2;border-radius:22px;
       opacity:0;transition:opacity .3s ease;
     }
     .card:hover .collage::after, .card:focus-visible .collage::after{opacity:.58}
