@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Rebuilding traffic accident reporting for the Swedish Police</title>
+<style>
+
+  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;--placeholder:#ededed;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  p{margin:0 0 1.25rem}
+  ul{list-style:none;margin:0;padding:0}
+  li:last-child{margin-bottom:0}
+  .item{font-weight:600;font-size:19px;line-height:1.45;display:block}
+  .note{display:block;margin-top:.3rem;color:var(--ink-soft)}
+  .ph{background:var(--placeholder);display:flex;align-items:center;justify-content:center;
+    color:#9a9a9a;font-size:.8125rem;text-align:center;padding:1rem;}
+  .ph.phone{aspect-ratio:828/1792}
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+  /* Device frame. The crops are mid-page slices, so no notch or home
+     indicator is drawn — they would sit on top of real UI. */
+  .device{
+    position:relative;
+    background:#111;
+    padding:7px;
+    border-radius:30px;
+    box-shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 26px rgba(0,0,0,.14);
+  }
+  .screen{position:relative;overflow:hidden;border-radius:23px}
+  .device img{display:block;width:100%;height:auto}
+  @media (max-width:560px){
+    .shots{grid-auto-flow:column;grid-template-columns:none;
+      overflow-x:auto;gap:.75rem;padding-bottom:.5rem}
+    .shots .device{width:58vw;flex:0 0 auto}
+  }
+  .ph.wide{aspect-ratio:2186/776}
+  .ph.proto{aspect-ratio:3264/1704}
+  figure img{display:block;width:100%;height:auto}
+  .shots img{width:100%;height:auto}
+  figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint)}
+  .back{font-size:.9375rem;color:var(--ink-soft);
+    text-decoration:underline;text-decoration-color:#bbb;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  .back:hover{color:var(--ink);text-decoration-color:var(--ink)}
+
+  body{font-size:17px;line-height:1.6}
+  .wrap{display:grid;grid-template-columns:17rem minmax(0,44rem);gap:7rem;
+    max-width:72rem;margin:0 auto;padding:2rem 32px 9rem}
+  aside{position:sticky;top:5.5rem;align-self:start;font-size:.875rem;line-height:1.45}
+  .topbar-outer{position:sticky;top:0;z-index:2;background:#fff}
+  .topbar{max-width:72rem;margin:0 auto;padding:1.75rem 32px 1.25rem}
+  @media (max-width:860px){.topbar{padding:1.25rem 24px 1rem}}
+  .meta{margin:0 0 2.5rem}
+  .meta div{padding:.5rem 0}
+  .meta dt{font-weight:600;color:var(--ink);font-size:.875rem;margin-bottom:.2rem}
+  .meta dd{margin:0;color:var(--ink-soft)}
+  nav{display:flex;flex-direction:column;gap:.5rem;
+    border-top:1px solid #e0e0e0;padding-top:1.5rem}
+  nav a{color:var(--ink-soft);font-size:.875rem;
+    text-decoration:underline;text-decoration-color:#bbb;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  nav a:hover{color:var(--ink);text-decoration-color:var(--ink)}
+  h1{font-size:2.375rem;line-height:1.14;letter-spacing:-.02em;font-weight:700;margin:0 0 1rem}
+  .disclosure{color:#c2410c;font-size:1rem;font-weight:500;
+    line-height:1.4;letter-spacing:-.008em;margin:0 0 2rem}
+  .intro{font-size:1.125rem;line-height:1.55;color:var(--ink-soft);margin:0 0 1.1rem}
+  .intro.lead{color:var(--ink)}
+  h2{font-size:1.625rem;line-height:1.22;letter-spacing:-.015em;font-weight:700;margin:4.25rem 0 1.35rem}
+  li{margin:0 0 1.6rem}
+  ul.dots{list-style:disc;padding-left:1.1rem}
+  ul.dots li{margin:0 0 .9rem}
+  ul.dots li::marker{color:var(--ink-faint)}
+  figure{margin:2.5rem 0}
+  @media (min-width:1100px){figure{margin-right:-6rem}}
+  .ph.phone{max-width:15rem}
+  @media (max-width:860px){
+    .wrap{display:block;padding-top:2.5rem}
+    aside{position:static;margin-bottom:3.5rem}
+    .wrap{padding:2rem 24px 6rem}
+    nav{display:none}
+    h1{font-size:2rem}
+  }
+
+</style>
+</head>
+<body>
+<div class="topbar-outer"><div class="topbar"><a class="back" href="/portfolio/">Back to work</a></div></div>
+<div class="wrap">
+  <aside>
+    <dl class="meta">
+  <div><dt>When</dt><dd>2024</dd></div>
+  <div><dt>Role</dt><dd>Main designer, project lead</dd></div>
+  <div><dt>Responsibilities</dt><dd>User research, flows, UI, validation rules, copy, project coordination, stakeholder management</dd></div>
+  <div><dt>Teams</dt><dd>Two cross-functional teams at the Swedish Police consisting of designers, business analysts, product manager and developers, one IT team at the Swedish transport agency</dd></div>
+</dl>
+    <nav>
+    <a href="#problem">Problem</a>
+    <a href="#result">Result</a>
+    <a href="#goals">Defining goals and scope</a>
+    <a href="#research">Research</a>
+    <a href="#discoveries">Main discoveries</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#left-out">Deliberatly left out</a>
+    <a href="#outcome">Outcome</a>
+    <a href="#differently">What I'd do differently</a>
+    </nav>
+  </aside>
+  <main>
+<h1>Rebuilding traffic accident reporting for the Swedish Police</h1>
+<p class="disclosure">All screens contain test data only — no real people, vehicles or cases. Nothing shown is confidential.</p>
+<p class="intro lead">I led the work for rebuilding the flow of reporting traffic accidents on the scene. From setting scope to designing possible solutions and leading the work of implementation through two cross-functional teams.</p>
+
+<h2 id="problem">Problem</h2>
+<p>The current app for reporting traffic accidents led to inefficient work for the officers and its suboptimal output led to unnecessary work for caseworkers and statistics handlers that used the app's output.</p>
+<p>This project connected to the Police IT department's goal of "decreasing unnecessary admin time for operational staff".</p>
+
+<h2 id="result">Result</h2>
+<p>Officers reported the new flow as much faster and easier. Caseworkers reported the new app's output as easier to work with. Statistics handlers reported no noticeable change.</p>
+
+<figure>
+  <div class="shots">
+    <div class="device"><div class="screen"><img src="img/flow-1.png" alt="Vehicles listed with the people involved nested under each one."></div></div>
+    <div class="device"><div class="screen"><img src="img/flow-2.png" alt="Accident circumstances, followed by speed limit pickers for each street."></div></div>
+    <div class="device"><div class="screen"><img src="img/flow-3.png" alt="The accident sketch, the parties involved, and the description field, ending in the send button."></div></div>
+  </div>
+  <figcaption>The finished flow — everything on one page. [placeholder caption]</figcaption>
+</figure>
+<h2 id="goals">Defining goals and scope</h2>
+<p>I set up a forum with experts from each role that handled the data — officers, caseworkers and statistics handlers — to help set the scope and for continuous communication throughout the work.</p>
+<p>With the expert group I narrowed the goal down to <strong>Decrease reporting time for accidents involving max 3 vehicles</strong> which was found to account for roughly 85% of the reported accidents. With the secondary goal of increasing quality of data sent for statistics and casework, or at the very least keeping it at the same quality.</p>
+
+<h2 id="research">Research</h2>
+<ul>
+  <li><span class="item">Querying the Swedish traffic accident database (the same database as the app was reporting to)</span><span class="note">Acquiring quantitative data to discover the most common denominators for the accidents that were reported by the police on the scene. Initially used to narrow down the scope. Also used in a later design stage to optimize the user flow.</span></li>
+  <li><span class="item">Three ride-alongs and around 10 interviews with officers reporting accidents regularly</span><span class="note">Getting a general feel for how the users experienced the app and observing their pain points</span></li>
+  <li><span class="item">Staged accident scenarios with actors</span><span class="note">No traffic accidents occurred in the initial ride-alongs. I instead decided to set up two staged accident scenarios with people playing the drivers and witnesses involved, and officers working the case reporting through the app.</span></li>
+  <li><span class="item">User interviews with caseworkers and statistics handlers</span><span class="note">Understanding how the output from the app was used.</span></li>
+</ul>
+
+<h2 id="discoveries">Main discoveries from research</h2>
+<ul class="dots">
+  <li>Users had to input all information before a colleague could continue, including information they didn't have at the scene. This was a major factor in the low quality of output as well as the time it took to complete the flow.</li>
+  <li>The sketch of the accident was considered the main painpoint for all three roles involved.</li>
+  <li>It was hard for the users to get an overview with the heavy hierarchical navigation that was in the app.</li>
+  <li>The situations at the scene are often in stressful environments and need to be resolved quickly.</li>
+</ul>
+
+<h2 id="decisions">Decisions</h2>
+<ul>
+  <li><span class="item">Build this flow into another already existing police app instead of rebuilding the current one</span><span class="note">It corresponded better with the officers' preferred workflow. Also, instead of having to build a lot of the functionality and data connections from scratch, the existing app already had it set up.</span></li>
+  <li><span class="item">Send each piece of data as it is entered</span><span class="note">This removed the blocker for colleagues/caseworkers and the officer could fill out the complete information at a later stage in a less stressful situation.</span></li>
+  <li><span class="item">Increase zoom level in sketch component</span><span class="note">Users' main issue with sketching was that they could not fit the whole accident inside the component.</span></li>
+  <li><span class="item">Make hierarchy as flat as possible to get a better overview</span><span class="note">My initial design with a hierarchical flow was disliked by all users. A developer in the team then came up with the idea of making an extremely flat design which in the end was a success after user testing. This was also supported by the goal of designing for smaller accidents, making the scrolling not too long for the user even with all vehicles and people in the same view.</span>
+    <figure><img src="img/prototype.png" alt="Four lo-fi prototype screens in Comic Sans, showing vehicles and people as separate nested views."><figcaption>The lo-fi prototype was iterated until it looked clearly unfinished. Before that, people assumed they were being shown a finished product and leaned towards "it's fine as it is" instead of saying what they actually thought.</figcaption></figure>
+  </li>
+  <li><span class="item">Standard iOS pickers, across the whole app</span><span class="note">Most inherited single-choice pickers made users navigate into a separate view and back out again. My flow had to stay consistent with the rest of the app, so rather than accept the pattern I started an initiative to replace all of them app-wide, and worked it through with the host team's designers and developers.</span>
+    <figure><img src="img/picker.png" alt="A row with an inline chevron picker above a row that navigates into a separate view."><figcaption>The standard inline picker, next to a row that still navigates into a separate view. [placeholder caption]</figcaption></figure>
+  </li>
+  <li><span class="item">Rename fields to state clearly what the info is for</span>
+    <figure><img src="img/description.png" alt="The renamed accident description field, labelled for the statistics database."><figcaption>The previous name Händelseförlopp (Sequence of events), was only for statistics but interpreted by most users as input for further casework, which led to the wrong information being input.</figcaption></figure>
+  </li>
+  <li><span class="item">Animal accidents as one of the few exceptions of the flat hierarchy</span><span class="note">According to the traffic accident data animals are rarely reported and the components took up a lot of space.</span>
+    <figure><img src="img/djur.png" alt="A single row showing the number of animals involved, which opens a separate view."><figcaption>Animals kept as one navigate-in row. [placeholder caption]</figcaption></figure>
+  </li>
+</ul>
+
+<h2 id="left-out">What was deliberately left out</h2>
+<ul>
+  <li><span class="item">A full rework of the sketch was left out</span><span class="note">Although the sketch was a key component of the flow and one of the main problems for the users, this was left out after discussions with the devs. Due to technical debt it was considered too time consuming and we settled for a smaller fix of only increasing zoom levels.</span></li>
+  <li><span class="item">Custom vehicle icons that followed the app's iOS native design</span><span class="note">The main use case for the icons was discoverability when scrolling a long page. These icons already existed and discoverability worked well after user testing, so there was no need to build new icons just for the sake of aesthetics.</span></li>
+</ul>
+
+<h2 id="outcome">Outcome</h2>
+<p>Shipped in 2024. Reporting time was never instrumented, so there is no before-and-after in minutes. What follows is what users and the receiving roles reported in follow-ups.</p>
+<ul class="dots">
+  <li>Officers reported that they experienced reporting through the new user flow as much faster and easier.</li>
+  <li>Officers reported it was easier and quicker to sketch the accident with the higher zoom level.</li>
+  <li>Caseworkers and officers stated collaboration was easier since it could now be done directly as a team.</li>
+  <li>Statistics handlers reported no decline nor any major improvement in the quality of the statistics output from the app, including the sketch — contrary to my theory that the higher zoom level would improve it.</li>
+</ul>
+
+<h2 id="differently">What I'd do differently today</h2>
+<p>In a few situations I had to make a tradeoff between function and aesthetics to get a fair level of both. Today I'd lean way more heavily towards function. This is a work tool that needs to be clear and functional, users want to look at this app as little as possible and just finish the task without any obstacles.</p>
+<p>The clearest example is text sizes and colours: in this design they follow the iOS standard which looks good aesthetically. However they could be hard to read at times depending on the user and the light conditions, and for an app like this the usability in all situations is a lot more important than aesthetics.</p>
+  </main>
+</div>
+</body>
+</html>
