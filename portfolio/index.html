@@ -7,7 +7,7 @@
 <title>Henrik Andersson — Portfolio</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <style>
-  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676}
+  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;--tint:#eceef1}
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
@@ -15,21 +15,53 @@
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
     font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
   }
-  main{max-width:44rem;margin:0 auto;padding:18vh 32px 8rem}
+  main{max-width:56rem;margin:0 auto;padding:14vh 32px 8rem}
   h1{font-size:2.375rem;line-height:1.14;letter-spacing:-.02em;font-weight:700;margin:0 0 .75rem}
-  .role{font-size:1.125rem;color:var(--ink-soft);margin:0 0 3.5rem}
-  h2{font-size:.8125rem;text-transform:uppercase;letter-spacing:.11em;
-     font-weight:700;color:var(--ink-faint);margin:0 0 1.25rem}
-  ul{list-style:none;margin:0;padding:0}
-  li{margin:0 0 1.5rem}
-  a.work{color:var(--ink);font-size:1.1875rem;font-weight:600;
-    text-decoration:underline;text-decoration-color:#bbb;
-    text-underline-offset:4px;text-decoration-thickness:1px}
-  a.work:hover{text-decoration-color:var(--ink)}
-  .where{display:block;color:var(--ink-faint);font-size:.9375rem;margin-top:.35rem;line-height:1.45}
+  .role{font-size:1.125rem;color:var(--ink-soft);margin:0 0 4rem}
+
+  .card{display:block;text-decoration:none;color:inherit;position:relative;isolation:isolate}
+  .collage{
+    position:relative;overflow:hidden;border-radius:22px;background:var(--tint);
+    aspect-ratio:4/3;
+  }
+  .collage .shot{
+    position:absolute;width:30%;border-radius:18px;overflow:hidden;background:#111;padding:5px;
+    box-shadow:0 10px 34px rgba(0,0,0,.18);
+    transition:filter .35s ease, opacity .35s ease;
+  }
+  .collage .shot img{display:block;width:100%;height:auto;border-radius:14px}
+  .shot.one  {left:6%;  top:16%; transform:rotate(-7deg)}
+  .shot.two  {left:34%; top:8%;  transform:rotate(-2deg); z-index:1}
+  .shot.three{left:62%; top:18%; transform:rotate(5deg)}
+
+  .meta{padding:1.5rem .25rem 0}
+  .title{font-size:1.625rem;line-height:1.25;letter-spacing:-.012em;font-weight:700;margin:0 0 1rem}
+  .sub{color:var(--ink-faint);font-size:1.1875rem;font-weight:500;line-height:1.5;margin:0}
+
+  /* Pointer devices: text appears over the collage on hover */
+  @media (hover:hover) and (min-width:48rem){
+    .meta{
+      position:absolute;inset:0;padding:2rem 2.75rem;
+      display:flex;flex-direction:column;justify-content:center;
+      opacity:0;transition:opacity .3s ease;
+    }
+    .card:hover .meta, .card:focus-visible .meta{opacity:1}
+    .card:hover .collage .shot, .card:focus-visible .collage .shot{
+      filter:blur(24px);opacity:1;
+    }
+    .collage::after{
+      content:"";position:absolute;inset:0;background:#dce5f0;z-index:2;
+      opacity:0;transition:opacity .3s ease;
+    }
+    .card:hover .collage::after, .card:focus-visible .collage::after{opacity:.25}
+    .meta{z-index:3}
+    .title{font-size:2.125rem}
+  }
   @media (max-width:640px){
-    main{padding:10vh 24px 6rem}
+    main{padding:8vh 24px 6rem}
     h1{font-size:2rem}
+    .role{margin-bottom:2.5rem}
+    .shot{width:34%}
   }
 </style>
 </head>
@@ -38,12 +70,17 @@
   <h1>Henrik Andersson</h1>
   <p class="role">Senior Product Designer</p>
 
-  <ul>
-    <li>
-      <a class="work" href="traffic-accident-reporting/">Rebuilding traffic accident reporting for the Swedish Police</a>
-      <span class="where">Main Designer, Project Lead<br>2024</span>
-    </li>
-  </ul>
+  <a class="card" href="traffic-accident-reporting/">
+    <div class="collage">
+      <div class="shot one"><img src="img/flow-1.png" alt=""></div>
+      <div class="shot two"><img src="img/flow-2.png" alt=""></div>
+      <div class="shot three"><img src="img/flow-3.png" alt=""></div>
+    </div>
+    <div class="meta">
+      <p class="title">Rebuilding traffic accident reporting for the Swedish Police</p>
+      <p class="sub">Main Designer, Project Lead<br>2024</p>
+    </div>
+  </a>
 </main>
 </body>
 </html>
