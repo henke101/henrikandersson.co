@@ -14,7 +14,7 @@
   body{margin:0;background:#fff;color:var(--ink);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
     -webkit-font-smoothing:antialiased;}
-  p{margin:0 0 1.25rem}
+  p{margin:0 0 2.45rem}
   ul{list-style:none;margin:0;padding:0}
   li:last-child{margin-bottom:0}
   .item{font-weight:600;font-size:19px;line-height:1.45;display:block}
@@ -27,7 +27,7 @@
     text-underline-offset:3px;text-decoration-thickness:1px}
   .back:hover{color:var(--ink);text-decoration-color:var(--ink)}
 
-  body{font-size:17px;line-height:1.6}
+  body{font-size:19px;line-height:1.65}
   .wrap{display:grid;grid-template-columns:17rem minmax(0,44rem);gap:7rem;
     max-width:72rem;margin:0 auto;padding:2rem 32px 9rem}
   aside{position:sticky;top:5.5rem;align-self:start;font-size:.875rem;line-height:1.45}
@@ -46,16 +46,24 @@
   nav a:hover{color:var(--ink);text-decoration-color:var(--ink)}
   h1{font-size:2.575rem;line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0 0 1rem}
   .disclosure{color:var(--ink);font-size:1rem;font-weight:700;
-    line-height:1.45;margin:0 0 2.75rem}
-  .intro{font-size:1.125rem;line-height:1.55;color:var(--ink-soft);margin:0 0 1.1rem}
+    line-height:1.45;margin:0 0 3.5rem}
+  .intro{font-size:inherit;line-height:inherit;color:var(--ink-soft);margin:0 0 1.1rem}
   .intro.lead{color:var(--ink);margin-bottom:0}
-  h2{font-size:2rem;line-height:1.18;letter-spacing:-.015em;font-weight:700;margin:4.25rem 0 1.35rem}
-  h3{font-size:1.125rem;line-height:1.3;font-weight:700;margin:2.25rem 0 .75rem}
-  li{margin:0 0 1.6rem}
+  h1 + h2{margin-top:4rem}
+  h2{font-size:2.25rem;line-height:1.18;letter-spacing:-.015em;font-weight:700;margin:6rem 0 .6rem}
+  h3{font-size:1.3rem;line-height:1.3;font-weight:700;margin:3rem 0 .9rem}
+  li{margin:0 0 1.75rem}
   ul.dots{list-style:disc;padding-left:1.1rem}
-  ul.dots li{margin:0 0 .9rem}
+  ul.dots li{margin:0 0 1rem}
   ul.dots li::marker{color:var(--ink-faint)}
-  figure{margin:2.5rem 0}
+  ul.plain{list-style:none;padding-left:0}
+  ul.plain li{margin:0 0 1.1rem}
+  ul.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 3rem;margin-top:0}
+  ul.grid-2 li{margin:0}
+  ul.big li{font-size:23px;font-weight:600;line-height:1.4}
+  ul.grid-2 + ul{margin-top:2rem}
+  ul.grid-2 + ul li{margin:0 0 .35rem}
+  figure{margin:3.5rem 0}
   @media (min-width:1100px){figure{margin-right:-6rem}}
   @media (max-width:860px){
     .wrap{display:block;padding-top:2.5rem}
@@ -64,6 +72,7 @@
     nav{display:none}
     h1{font-size:2rem}
     h2{font-size:1.625rem}
+    ul.grid-2{grid-template-columns:1fr;gap:.9rem}
   }
 
 </style>
@@ -79,16 +88,17 @@
   <div><dt>Teams</dt><dd>Two cross-functional teams at the Swedish Police consisting of designers, business analysts, product manager and developers, one IT team at the Swedish transport agency</dd></div>
 </dl>
     <nav>
+    <a href="#overview">Overview</a>
     <a href="#problem">Problem</a>
     <a href="#outcome">Outcome</a>
     <a href="#process">Process</a>
     <a href="#decisions">Decisions</a>
-    <a href="#left-out">Deliberatly left out</a>
     <a href="#differently">What I'd do differently</a>
     </nav>
   </aside>
   <main>
 <h1>Rebuilding traffic accident reporting for the Swedish Police</h1>
+<h2 id="overview">Overview</h2>
 <p class="intro lead">I led the work for rebuilding the flow of reporting traffic accidents on the scene. From setting scope to designing possible solutions and leading the work of implementation through two cross-functional teams.</p>
 <p class="disclosure">Note: All screens contain test data only — no real people, vehicles or cases. Nothing shown is confidential.</p>
 
@@ -105,23 +115,16 @@
 
 <p>Shipped in 2024. Follow-ups after release concluded:</p>
 
-<h3>Officers</h3>
-<ul class="dots">
+<ul class="plain grid-2 big">
   <li>Reporting was dramatically faster.</li>
+  <li>Officers stopped getting stuck in the UI.</li>
   <li>The flow went from a burden on the scene to something officers finished when it best suited them.</li>
-  <li>Officers stopped getting stuck in the UI, apart from a few rare exceptions.</li>
   <li>Real-time collaboration turned the flow from a bottleneck into teamwork.</li>
-  <li>Sketching became easy enough to stop being a complaint.</li>
 </ul>
 
-<h3>Caseworkers</h3>
-<ul class="dots">
-  <li>Caseworkers could now start while officers were still working the scene.</li>
-</ul>
-
-<h3>Statistics handlers</h3>
-<ul class="dots">
-  <li>No decline nor any major improvement in the quality of the statistics output from the app, including the sketch.</li>
+<ul class="plain">
+  <li>Casework could start directly while officers were still working the scene.</li>
+  <li>No decline in the quality of the statistics output from the app.</li>
 </ul>
 
 <h2 id="process">Process</h2>
@@ -138,37 +141,22 @@
   <li>I performed <strong>interviews with caseworkers and statistics handlers</strong> to understand how the output from the app was used.</li>
 </ul>
 
-<h3 id="discoveries">Main discoveries from research</h3>
-<ul class="dots">
-  <li>I found the digital sketch of the accident was considered the main pain point for all three roles involved.</li>
-  <li>I realized that a major factor in the low quality of output as well as the time it took to complete the flow was that users had to input all information before a colleague could continue, including information they didn't have at the scene.</li>
-  <li>From observations I saw users frequently struggling to get an overview with the heavy hierarchical navigation that was in the app.</li>
-  <li>I concluded situations at the scene are often in stressful environments and need to be resolved quickly.</li>
+<h3 id="discoveries">Discoveries</h3>
+<ul class="plain grid-2">
+  <li>The digital sketch of the accident was the main pain point for all three roles involved</li>
+  <li>Information that didn't yet exist had to be filled out before casework could continue which caused bad data quality</li>
+  <li>Two or more officers always worked the scene, but only one of them could use the app to fill out the information, which caused major inefficiency</li>
+  <li>Officers were frequently struggling to get an overview with the heavy hierarchical navigation in the app</li>
 </ul>
 
 <h2 id="decisions">Decisions</h2>
 <ul>
-  <li><span class="item">Build this flow into another already existing police app instead of rebuilding the current one</span><span class="note">It corresponded better with the officers' preferred workflow. Also, instead of having to build a lot of the functionality and data connections from scratch, the existing app already had it set up. The decision was made together with business analysts and the product manager from the other app's team, and also developers from both teams.</span></li>
+  <li><span class="item">Build this flow into another already existing police app</span><span class="note">I initiated contact with the team of another app that already had a lot of the functionality that solved our problems. Together with business analysts, product managers and developers from both teams as well as the expert group we decided to build the traffic accident reporting into their app. By doing so we could send data continuously for collaboration and casework, and to statistics handlers at a later stage when all data had been acquired.</span></li>
   <li><span class="item">Send each piece of data as it is entered</span><span class="note">This removed the blocker for colleagues/caseworkers and the officer could fill out the complete information at a later stage in a less stressful situation.</span></li>
-  <li><span class="item">Increase zoom level in sketch component</span><span class="note">Users' main issue with sketching was that they could not fit the whole accident inside the component.</span></li>
-  <li><span class="item">Make hierarchy as flat as possible to get a better overview</span><span class="note">My initial design with a hierarchical flow was disliked by all users. A developer in the team then came up with the idea of making an extremely flat design which in the end was a success after user testing. This was also supported by the goal of designing for smaller accidents, making the scrolling not too long for the user even with all vehicles and people in the same view.</span>
-    <figure><img src="img/prototype.png" alt="Four lo-fi prototype screens in Comic Sans, showing vehicles and people as separate nested views."><figcaption>The lo-fi prototype was iterated until it looked clearly unfinished. Before that, people assumed they were being shown a finished product and leaned towards "it's fine as it is" instead of saying what they actually thought.</figcaption></figure>
+  <li><span class="item">Do minimal work in sketch component</span><span class="note">Due to technical debt I decided together with developers to rule out a complete rework of the sketch and instead only increase the zoom level. This was the most impact for the least amount of effort, since the officers' main issue with sketching was that they could not fit the whole accident inside the sketch component.</span></li>
+  <li><span class="item">Make hierarchy as flat as possible</span><span class="note">Made for better overview. Page being too long was no problem for accidents with max 3 cars.</span>
+    <figure><img src="img/prototype.png" alt="Four lo-fi prototype screens in Comic Sans, showing vehicles and people as separate nested views."><figcaption>My initial idea of a hierarchical flow was rejected in user testing. Having all info on one page was preferred by 14 out of the 15 officers tested.</figcaption></figure>
   </li>
-  <li><span class="item">Standard iOS pickers, across the whole app</span><span class="note">Most inherited single-choice pickers made users navigate into a separate view and back out again. My flow had to stay consistent with the rest of the app, so rather than accept the pattern I started an initiative to replace all of them app-wide, and worked it through with the host team's designers and developers.</span>
-    <figure><img src="img/picker.png" alt="A row with an inline chevron picker above a row that navigates into a separate view."><figcaption>The standard inline picker, next to a row that still navigates into a separate view.</figcaption></figure>
-  </li>
-  <li><span class="item">Rename fields to state clearly what the info is for</span>
-    <figure><img src="img/description.png" alt="The renamed accident description field, labelled for the statistics database."><figcaption>The previous name Händelseförlopp (Sequence of events), was only for statistics but interpreted by most users as input for further casework, which led to the wrong information being input.</figcaption></figure>
-  </li>
-  <li><span class="item">Animal accidents as one of the few exceptions of the flat hierarchy</span><span class="note">According to the traffic accident data animals are rarely reported and the components took up a lot of space.</span>
-    <figure><img src="img/djur.png" alt="A single row showing the number of animals involved, which opens a separate view."><figcaption>Animals kept as one navigate-in row.</figcaption></figure>
-  </li>
-</ul>
-
-<h2 id="left-out">What was deliberately left out</h2>
-<ul>
-  <li><span class="item">A full rework of the sketch was left out</span><span class="note">Although the sketch was a key component of the flow and one of the main problems for the users, this was left out after discussions with the devs. Due to technical debt it was considered too time consuming and we settled for a smaller fix of only increasing zoom levels.</span></li>
-  <li><span class="item">Custom vehicle icons that followed the app's iOS native design</span><span class="note">The main use case for the icons was discoverability when scrolling a long page. These icons already existed and discoverability worked well after user testing, so there was no need to build new icons just for the sake of aesthetics.</span></li>
 </ul>
 
 <h2 id="differently">What I'd do differently today</h2>
