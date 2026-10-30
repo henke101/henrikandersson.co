@@ -52,6 +52,7 @@
   h1 + h2{margin-top:4rem}
   h2{font-size:2.25rem;line-height:1.18;letter-spacing:-.015em;font-weight:700;margin:6rem 0 .6rem}
   h3{font-size:1.3rem;line-height:1.3;font-weight:700;margin:3rem 0 .9rem}
+  h2 + ul{margin-top:2.4rem}
   li{margin:0 0 1.75rem}
   ul.dots{list-style:disc;padding-left:1.1rem}
   ul.dots li{margin:0 0 1rem}
@@ -152,15 +153,18 @@
 <h2 id="decisions">Decisions</h2>
 <ul>
   <li><span class="item">Build this flow into another already existing police app</span><span class="note">I initiated contact with the team of another app that already had a lot of the functionality that solved our problems. Together with business analysts, product managers and developers from both teams as well as the expert group we decided to build the traffic accident reporting into their app. By doing so we could send data continuously for collaboration and casework, and to statistics handlers at a later stage when all data had been acquired.</span></li>
-  <li><span class="item">Do minimal work in sketch component</span><span class="note">Due to technical debt I decided together with developers to rule out a complete rework of the sketch and instead only increase the zoom level. This was the most impact for the least amount of effort, since the officers' main issue with sketching was that they could not fit the whole accident inside the sketch component.</span></li>
+  <li><span class="item">Do minimal work in sketch component</span><span class="note">Due to technical debt I decided together with developers to rule out a complete rework of the sketch and instead only increase the zoom level. I considered this the most impact for the least amount of effort, since the officers' main issue with sketching was that they could not fit the whole accident inside the sketch component.</span></li>
   <li><span class="item">Make hierarchy as flat as possible</span><span class="note">Made for better overview. Page being too long was no problem for accidents with max 3 cars.</span>
     <figure><img src="img/prototype.png" alt="Four lo-fi prototype screens in Comic Sans, showing vehicles and people as separate nested views."><figcaption>My initial idea of a hierarchical flow was rejected in user testing. Having all info on one page was preferred by 14 out of the 15 officers tested.</figcaption></figure>
   </li>
 </ul>
 
 <h2 id="differently">What I'd do differently today</h2>
-<p>In a few situations I had to make a tradeoff between function and aesthetics to get a fair level of both. Today I'd lean way more heavily towards function. This is a work tool that needs to be clear and functional, users want to look at this app as little as possible and just finish the task without any obstacles.</p>
-<p>The clearest example is text sizes and colours: in this design they follow the iOS standard which looks good aesthetically. However they could be hard to read at times depending on the user and the light conditions, and for an app like this the usability in all situations is a lot more important than aesthetics.</p>
+<h3>Function over aesthetics</h3>
+<p>I chose, for example, to keep text sizes and colors at the iOS standard because they looked good, accepting the risk that they'd work less well in difficult light conditions. Today I'd pick function every time when making trade-offs between function and aesthetics. I've realized that for work tools, users want to look at the app as little as possible and just finish the task without any obstacles.</p>
+
+<h3>Don't be afraid to be different</h3>
+<p>Initially I modeled navigation after other internal apps, none of which had an extremely flat hierarchy. It wasn't until a developer suggested putting literally everything on a single page that I prototyped the fully flat layout that won in user testing. Today I'd focus less on how other similar apps look and prototype and test the extremes directly.</p>
   </main>
 </div>
 </body>
