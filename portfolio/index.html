@@ -31,6 +31,12 @@
   .title{font-size:1.625rem;line-height:1.25;letter-spacing:-.012em;font-weight:700;margin:0 0 1rem}
   .sub{color:var(--ink-faint);font-size:1.1875rem;font-weight:500;line-height:1.5;margin:0}
 
+  .section{margin:5rem 0 1.5rem;font-size:26px;line-height:1.2;
+    letter-spacing:-.01em;font-weight:700;color:var(--ink)}
+  .cards{display:grid;gap:3rem}
+  .cards.two{grid-template-columns:1fr 1fr;gap:2rem}
+  .collage.blank{aspect-ratio:4/3}
+
   @media (hover:hover) and (min-width:48rem){
     .meta{
       position:absolute;inset:0;z-index:3;padding:2rem 2.75rem;
@@ -48,6 +54,8 @@
     .card:hover .collage::after, .card:focus-visible .collage::after{opacity:.58}
     .card:hover .sub, .card:focus-visible .sub{color:#3c3c3c}
     .title{font-size:2.125rem}
+    .cards.two .title{font-size:1.5rem}
+    .cards.two .meta{padding:1.5rem 1.75rem}
   }
   @media (max-width:640px){
     main{padding:8vh 24px 6rem}
@@ -63,14 +71,53 @@
   <h1>Henrik Andersson</h1>
   <p class="role">Senior Product Designer</p>
 
-  <a class="card" href="traffic-accident-reporting/">
-    <div class="collage"><img src="img/collage.png" draggable="false" alt="Three screens from the finished reporting flow."></div>
-    </div>
-    <div class="meta">
-      <p class="title">Rebuilding traffic accident reporting for the Swedish Police</p>
-      <p class="sub">Main Designer, Project Lead<br>2024</p>
-    </div>
-  </a>
+  <p class="section">Case studies</p>
+
+  <div class="cards">
+    <a class="card" href="traffic-accident-reporting/">
+      <div class="collage"><img src="img/collage.png" draggable="false" alt="Three screens from the finished reporting flow."></div>
+      <div class="meta">
+        <p class="title">Rebuilding traffic accident reporting for the Swedish Police</p>
+        <p class="sub">Main Designer, Project Lead<br>2024</p>
+      </div>
+    </a>
+
+    <a class="card" href="telemedicine-onboarding/">
+      <div class="collage blank"></div>
+      <div class="meta">
+        <p class="title">Redesigning onboarding for a telemedicine app</p>
+        <p class="sub"></p>
+      </div>
+    </a>
+
+    <a class="card" href="kanban-with-claude-code/">
+      <div class="collage blank"></div>
+      <div class="meta">
+        <p class="title">Designing and building a kanban board using only Claude Code</p>
+        <p class="sub"></p>
+      </div>
+    </a>
+  </div>
+
+  <p class="section">Side projects</p>
+
+  <div class="cards two">
+    <a class="card" href="#">
+      <div class="collage blank"></div>
+      <div class="meta">
+        <p class="title">Custom convenience store browser</p>
+        <p class="sub"></p>
+      </div>
+    </a>
+
+    <a class="card" href="#">
+      <div class="collage blank"></div>
+      <div class="meta">
+        <p class="title">App to learn Italian as a Spanish speaker</p>
+        <p class="sub"></p>
+      </div>
+    </a>
+  </div>
 </main>
 </body>
 </html>

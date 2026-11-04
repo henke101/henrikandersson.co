@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Redesigning onboarding for a telemedicine app</title>
+<style>
+
+  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;}
+  p{margin:0 0 2.45rem}
+  ul{list-style:none;margin:0;padding:0}
+  li:last-child{margin-bottom:0}
+  .item{font-weight:600;font-size:19px;line-height:1.45;display:block}
+  .note{display:block;margin-top:.3rem;color:var(--ink-soft)}
+  .body-size .item{font-size:inherit}
+  figure img{display:block;width:100%;height:auto}
+  /* 40px margin on a 1590px canvas: lines the caption up with the screen
+     itself rather than with the image's transparent padding. */
+  figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint);
+    padding-left:2.516%}
+  /* Review highlighting, temporary: blue = translated from Henrik's Swedish,
+     green = rephrased from his English. Delete both rules and the spans to ship. */
+  .tx{color:#1a5fb4}
+  .rp{color:#1a7f4b}
+  .back{font-size:.9375rem;color:var(--ink-soft);
+    text-decoration:underline;text-decoration-color:#bbb;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  .back:hover{color:var(--ink);text-decoration-color:var(--ink)}
+
+  body{font-size:19px;line-height:1.65}
+  .wrap{display:grid;grid-template-columns:17rem minmax(0,44rem);gap:7rem;
+    max-width:72rem;margin:0 auto;padding:2rem 32px 9rem}
+  aside{position:sticky;top:5.5rem;align-self:start;font-size:.875rem;line-height:1.45}
+  .topbar-outer{position:sticky;top:0;z-index:2;background:#fff}
+  .topbar{max-width:72rem;margin:0 auto;padding:1.75rem 32px 1.25rem}
+  @media (max-width:860px){.topbar{padding:1.25rem 24px 1rem}}
+  .meta{margin:0 0 2.5rem}
+  .meta div{padding:.5rem 0}
+  .meta dt{font-weight:600;color:var(--ink);font-size:1.175rem;margin-bottom:.2rem}
+  .meta dd{margin:0;color:var(--ink-soft)}
+  nav{display:flex;flex-direction:column;gap:.5rem;
+    border-top:1px solid #e0e0e0;padding-top:1.5rem}
+  nav a{color:var(--ink-soft);font-size:.875rem;
+    text-decoration:underline;text-decoration-color:#bbb;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  nav a:hover{color:var(--ink);text-decoration-color:var(--ink)}
+  h1{font-size:2.575rem;line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0 0 1rem}
+  .disclosure{color:var(--ink);font-size:1rem;font-weight:700;
+    line-height:1.45;margin:0 0 3.5rem}
+  .intro{font-size:inherit;line-height:inherit;color:var(--ink-soft);margin:0 0 1.1rem}
+  .intro.lead{color:var(--ink);margin-bottom:0}
+  h1 + h2{margin-top:4rem}
+  h2{font-size:2.25rem;line-height:1.18;letter-spacing:-.015em;font-weight:700;margin:6rem 0 .6rem}
+  h3{font-size:1.3rem;line-height:1.3;font-weight:700;margin:3rem 0 .9rem}
+  h2 + ul{margin-top:2.4rem}
+  li{margin:0 0 1.75rem}
+  ul.dots{list-style:disc;padding-left:1.1rem}
+  ul.dots li{margin:0 0 1rem}
+  ul.dots li::marker{color:var(--ink-faint)}
+  ul.plain{list-style:none;padding-left:0}
+  ul.plain li{margin:0 0 1.1rem}
+  ul.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 3rem;margin-top:0}
+  ul.grid-2 li{margin:0}
+  ul.big li{font-size:23px;font-weight:600;line-height:1.4}
+  ul.grid-2 + ul{margin-top:2rem}
+  ul.grid-2 + ul li{margin:0 0 .35rem}
+  figure{margin:3.5rem 0}
+  @media (min-width:1100px){figure{margin-right:-6rem}}
+  @media (max-width:860px){
+    .wrap{display:block;padding-top:2.5rem}
+    aside{position:static;margin-bottom:3.5rem}
+    .wrap{padding:2rem 24px 6rem}
+    nav{display:none}
+    h1{font-size:2rem}
+    h2{font-size:1.625rem}
+    ul.grid-2{grid-template-columns:1fr;gap:.9rem}
+  }
+
+</style>
+</head>
+<body>
+<div class="topbar-outer"><div class="topbar"><a class="back" href="/portfolio/">Back to work</a></div></div>
+<div class="wrap">
+  <aside>
+    <dl class="meta">
+  <div><dt>When</dt><dd>2021</dd></div>
+  <div><dt>Role</dt><dd>Main Designer</dd></div>
+  <div><dt>Responsibilities</dt><dd>User research, flows, <span class="tx">spotting the problem as CEO from the numbers after launch</span></dd></div>
+  <div><dt>Teams</dt><dd>Developed together with a team in Ukraine consisting of business analyst, project manager and developers</dd></div>
+</dl>
+    <nav>
+    <a href="#overview">Overview</a>
+    <a href="#problem">Problem</a>
+    <a href="#outcome">Outcome</a>
+    <a href="#process">Process</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#differently">What I'd do differently</a>
+    </nav>
+  </aside>
+  <main>
+<h1>Redesigning onboarding for a telemedicine app</h1>
+
+<h2 id="overview">Overview</h2>
+<p class="intro lead">I initiated and carried out a redesign of the onboarding flow for Clinix, a telehealth startup in Paraguay.</p>
+
+<h2 id="problem">Problem</h2>
+<p><span class="tx">After the first launch of the app: none of the downloads were leading to a booked appointment.</span></p>
+
+<figure>
+  <img src="img/booking-before-after.png" alt="Two screens side by side. On the left, an alphabetical list of symptoms. On the right, a list of doctors with their specialty, price and next available time, plus filters for date and specialty.">
+  <figcaption>The first booking step before and after.</figcaption>
+</figure>
+
+<h2 id="outcome">Outcome</h2>
+
+<ul class="plain grid-2 big">
+  <li><span class="tx">Users who downloaded the app and then made it to the last step before booking went from around 2% to around 90%.</span></li>
+  <li><span class="tx">New users who went on to book a consultation rose from 0% to around 5%.</span></li>
+</ul>
+
+<ul class="plain">
+  <li><span class="tx">Users could move around the app without logging in. Login was only necessary at the last step before booking.</span></li>
+  <li><span class="tx">A doctor's appointment was now booked the way they were used to: by the doctor's specialty, not by the patient's symptom.</span></li>
+</ul>
+
+<h2 id="process">Process</h2>
+
+<h3 id="goals">Goals and scope</h3>
+<p><span class="rp">Customers could be deciding not to book for any number of reasons, among them doctor availability, price and the hours on offer. I narrowed the scope down to what could be put down to a bad user flow alone.</span> <strong><span class="rp">Increase the percentage of users who make it from downloading the app to the step where the available doctors and hours are shown.</span></strong></p>
+
+<h3 id="research">Research</h3>
+<ul class="dots">
+  <li><span class="tx">Analytics</span></li>
+  <li><span class="tx">Stats from the Play Store and the App Store</span></li>
+  <li><span class="tx">Click tests with 3 users from the target group</span></li>
+  <li><span class="tx">5 user interviews</span></li>
+</ul>
+
+<h3 id="discoveries">Discoveries</h3>
+<ul class="plain grid-2">
+  <li>Users got blocked by having to log in on the first screen before being able to see anything of the app</li>
+  <li>Users were confused by the first booking step: to choose their symptom and not the doctor's specialty, which is the way to book a doctor's appointment in Paraguay</li>
+</ul>
+
+<figure>
+  <img src="img/login-wall.png" alt="The first screen of the app: the Clinix logo, an email field, a password field, a log in button and a sign up button.">
+  <figcaption>The screen the app opened on. Nothing could be reached without an account.</figcaption>
+</figure>
+
+<figure>
+  <img src="img/symptom-test.png" alt="A click test in progress: a tester at a desk tapping through the symptom step, headed Describa su síntoma, on a phone held flat on the table.">
+  <figcaption>All 3 tested users were confused when having to describe their symptoms.</figcaption>
+</figure>
+
+<h2 id="decisions">Decisions</h2>
+<ul>
+  <li><span class="item">Move the signup/login to the very last step before confirming and paying for the appointment</span><span class="note">This way users could get more of a feel for what booking an appointment through Clinix was about before being forced to make a decision to sign up.</span></li>
+  <li><span class="item">Rework the structure of the booking flow</span><span class="note">Although a big and costly change, <span class="rp">I considered it necessary</span>. All 3 tested users and 4 out of 5 interviewed users expressed they felt no confidence in the app or in Clinix when they couldn't book in their usual way. Seeing a doctor through an app and not physically was already making them hesitant.</span></li>
+</ul>
+
+<h2 id="differently">What I'd do differently today</h2>
+<p><span class="rp">I didn't design the initial flow, but I reviewed it and signed it off. It was developed together with Paraguayan doctors, but not tested enough on Paraguayan users before launch. The cost of rebuilding could have been avoided by testing with simple methods at an earlier stage.</span></p>
+  </main>
+</div>
+</body>
+</html>
