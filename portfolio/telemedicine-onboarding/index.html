@@ -25,10 +25,6 @@
      itself rather than with the image's transparent padding. */
   figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint);
     padding-left:2.516%}
-  /* Review highlighting, temporary: blue = translated from Henrik's Swedish,
-     green = rephrased from his English. Delete both rules and the spans to ship. */
-  .tx{color:#1a5fb4}
-  .rp{color:#1a7f4b}
   .back{font-size:.9375rem;color:var(--ink-soft);
     text-decoration:underline;text-decoration-color:#bbb;
     text-underline-offset:3px;text-decoration-thickness:1px}
@@ -73,6 +69,12 @@
   ul.grid-2 + ul li{margin:0 0 .35rem}
   figure{margin:3.5rem 0}
   @media (min-width:1100px){figure{margin-right:-6rem}}
+  /* The two Discoveries figures side by side. Column widths are the images'
+     own aspect ratios, so both render at the same height. */
+  .pair{display:grid;grid-template-columns:.5662fr .8785fr;gap:2rem;
+    align-items:start;margin:3.5rem 0}
+  .pair figure{margin:0}
+  @media (min-width:1100px){.pair{margin-right:-6rem}}
   @media (max-width:860px){
     .wrap{display:block;padding-top:2.5rem}
     aside{position:static;margin-bottom:3.5rem}
@@ -81,6 +83,7 @@
     h1{font-size:2rem}
     h2{font-size:1.625rem}
     ul.grid-2{grid-template-columns:1fr;gap:.9rem}
+    .pair{grid-template-columns:1fr;gap:2.5rem}
   }
 
 </style>
@@ -91,9 +94,9 @@
   <aside>
     <dl class="meta">
   <div><dt>When</dt><dd>2021</dd></div>
-  <div><dt>Role</dt><dd>Main Designer</dd></div>
-  <div><dt>Responsibilities</dt><dd>User research, flows, <span class="tx">spotting the problem as CEO from the numbers after launch</span></dd></div>
-  <div><dt>Teams</dt><dd>Developed together with a team in Ukraine consisting of business analyst, project manager and developers</dd></div>
+  <div><dt>Role</dt><dd>Main Designer, Project Lead</dd></div>
+  <div><dt>Responsibilities</dt><dd>User research, flows</dd></div>
+  <div><dt>Teams</dt><dd>Developed remotely with a team in Ukraine consisting of business analyst, project manager and developers.</dd></div>
 </dl>
     <nav>
     <a href="#overview">Overview</a>
@@ -108,65 +111,67 @@
 <h1>Redesigning onboarding for Clinix, a Paraguayan telemedicine app</h1>
 
 <h2 id="overview">Overview</h2>
-<p class="intro lead">I initiated and carried out a redesign of the onboarding flow for Clinix, a telehealth startup in Paraguay.</p>
+<p class="intro lead">I initiated and carried out a redesign of the onboarding and booking flow for Clinix, a startup in Paraguay providing online doctor's consultations.</p>
 
 <h2 id="problem">Problem</h2>
-<p><span class="tx">After the first launch of the app: none of the downloads were leading to a booked appointment.</span></p>
+<p>After the initial launch of the app, none of Clinix's app downloads were leading to booked appointments.</p>
 
 <figure>
   <img src="img/booking-before-after.png" alt="Two screens side by side. On the left, an alphabetical list of symptoms. On the right, a list of doctors with their specialty, price and next available time, plus filters for date and specialty.">
-  <figcaption>The first booking step before and after.</figcaption>
+  <figcaption>Before: Booking by symptom. After: Booking by doctor's specialty</figcaption>
 </figure>
 
 <h2 id="outcome">Outcome</h2>
 
 <ul class="plain grid-2 big">
-  <li><span class="tx">Users who downloaded the app and then made it to the last step before booking went from around 2% to around 90%.</span></li>
-  <li><span class="tx">New users who went on to book a consultation rose from 0% to around 5%.</span></li>
+  <li>App downloads converted into a booked consultation rose from 0% to ~&nbsp;5%.</li>
+  <li>Number of users that made it to the last step in booking flow went from ~&nbsp;2% to ~&nbsp;90%</li>
 </ul>
 
 <ul class="plain">
-  <li><span class="tx">Users could move around the app without logging in. Login was only necessary at the last step before booking.</span></li>
-  <li><span class="tx">A doctor's appointment was now booked the way they were used to: by the doctor's specialty, not by the patient's symptom.</span></li>
+  <li>Users could now see the app's contents without needing signup.</li>
+  <li>Consultations were now booked the way they were used to: by the doctor's specialty, not by the patient's symptom.</li>
 </ul>
 
 <h2 id="process">Process</h2>
 
 <h3 id="goals">Goals and scope</h3>
-<p><span class="rp">Customers could be deciding not to book for any number of reasons, among them doctor availability, price and the hours on offer. I narrowed the scope down to what could be put down to a bad user flow alone.</span> <strong><span class="rp">Increase the percentage of users who make it from downloading the app to the step where the available doctors and hours are shown.</span></strong></p>
+<p>I started off by narrowing down the scope to: <strong>Increase the percentage of users reaching the last step in the booking flow after downloading the app.</strong> I figured that customers deciding not to book could be due to a lot of factors, including doctor availability, price, available hours. Instead I narrowed down the scope to what could be improved by solely changing the user flow.</p>
 
 <h3 id="research">Research</h3>
 <ul class="dots">
-  <li><span class="tx">Analytics</span></li>
-  <li><span class="tx">Stats from the Play Store and the App Store</span></li>
-  <li><span class="tx">Click tests with 3 users from the target group</span></li>
-  <li><span class="tx">5 user interviews</span></li>
+  <li>Internal app analytics</li>
+  <li>Stats from the Play Store and the App Store</li>
+  <li>Usability tests with 3 users from the target group</li>
+  <li>5 user interviews</li>
 </ul>
 
 <h3 id="discoveries">Discoveries</h3>
 <ul class="plain grid-2">
-  <li>Users got blocked by having to log in on the first screen before being able to see anything of the app</li>
-  <li>Users were confused by the first booking step: to choose their symptom and not the doctor's specialty, which is the way to book a doctor's appointment in Paraguay</li>
+  <li>Users got blocked by having to sign up on the very first screen, before being able to see anything of the app.</li>
+  <li>Users were confused by having to choose their symptom and not the doctor's specialty, which is the standard way to book a consultation in Paraguay</li>
 </ul>
 
+<div class="pair">
 <figure>
   <img src="img/login-wall.png" alt="The first screen of the app: the Clinix logo, an email field, a password field, a log in button and a sign up button.">
-  <figcaption>The screen the app opened on. Nothing could be reached without an account.</figcaption>
+  <figcaption>This was the first and only thing users could see before getting stuck.</figcaption>
 </figure>
 
 <figure>
-  <img src="img/symptom-test.png" alt="A click test in progress: a tester at a desk tapping through the symptom step, headed Describa su síntoma, on a phone held flat on the table.">
+  <img src="img/symptom-test.png" alt="A usability test in progress: a tester at a desk tapping through the symptom step, headed Describa su síntoma, on a phone held flat on the table.">
   <figcaption>All 3 tested users were confused when having to describe their symptoms.</figcaption>
 </figure>
+</div>
 
 <h2 id="decisions">Decisions</h2>
 <ul>
-  <li><span class="item">Move the signup/login to the very last step before confirming and paying for the appointment</span><span class="note">This way users could get more of a feel for what booking an appointment through Clinix was about before being forced to make a decision to sign up.</span></li>
-  <li><span class="item">Rework the structure of the booking flow</span><span class="note">Although a big and costly change, <span class="rp">I considered it necessary</span>. All 3 tested users and 4 out of 5 interviewed users expressed they felt no confidence in the app or in Clinix when they couldn't book in their usual way. Seeing a doctor through an app and not physically was already making them hesitant.</span></li>
+  <li><span class="item">Move the signup/login to the very last step before confirming and paying for the appointment</span><span class="note">This way users could get more of a feel for what consultations through Clinix were about before being forced to make a decision to sign up.</span></li>
+  <li><span class="item">Rework the structure of the booking flow</span><span class="note">Although a big and costly change, I considered it necessary. All 3 tested users and 4 out of 5 interviewed users expressed they felt no confidence in Clinix when they couldn't book in their usual way. Seeing a doctor through an app and not physically was already making them hesitant.</span></li>
 </ul>
 
 <h2 id="differently">What I'd do differently today</h2>
-<p><span class="rp">I didn't design the initial flow, but I reviewed it and signed it off. It was developed together with Paraguayan doctors, but not tested enough on Paraguayan users before launch. The cost of rebuilding could have been avoided by testing with simple methods at an earlier stage.</span></p>
+<p>I was part of the group that reviewed and accepted the original booking flow before implementation, which we did without user testing with actual Paraguayan users. I made that tradeoff since the flow was developed together with Paraguayan doctors, and it was hard to get ahold of Paraguayan users to test on. Knowing the big costs of this mistake, and how little feedback was needed to realize it, I would not start implementation without at least quick user testing from the actual target group today.</p>
   </main>
 </div>
 </body>
