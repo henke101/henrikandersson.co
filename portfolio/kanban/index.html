@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<title>Designing and building a kanban board using only Claude Code</title>
+<title>Designing and implementing a kanban board for an IT company in Asunción</title>
 <style>
 
   :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;}
@@ -21,7 +21,11 @@
   .note{display:block;margin-top:.3rem;color:var(--ink-soft)}
   .body-size .item{font-size:inherit}
   figure img{display:block;width:100%;height:auto}
-  figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint)}
+  figure img + img{margin-top:0}
+  /* 40px margin on a 1590px canvas: lines the caption up with the screens
+     themselves rather than with the image's transparent padding. */
+  figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;color:var(--ink-faint);
+    padding-left:2.516%}
   .back{font-size:.9375rem;color:var(--ink-soft);
     text-decoration:underline;text-decoration-color:#bbb;
     text-underline-offset:3px;text-decoration-thickness:1px}
@@ -46,7 +50,7 @@
   nav a:hover{color:var(--ink);text-decoration-color:var(--ink)}
   h1{font-size:2.575rem;line-height:1.12;letter-spacing:-.02em;font-weight:700;margin:0 0 1rem}
   .disclosure{color:var(--ink);font-size:1rem;font-weight:700;
-    line-height:1.45;margin:0 0 3.5rem}
+    line-height:1.45;margin:1rem 0 3.5rem}
   .intro{font-size:inherit;line-height:inherit;color:var(--ink-soft);margin:0 0 1.1rem}
   .intro.lead{color:var(--ink);margin-bottom:0}
   h1 + h2{margin-top:4rem}
@@ -83,40 +87,71 @@
 <div class="wrap">
   <aside>
     <dl class="meta">
-  <div><dt>When</dt><dd></dd></div>
-  <div><dt>Role</dt><dd></dd></div>
-  <div><dt>Responsibilities</dt><dd></dd></div>
-  <div><dt>Teams</dt><dd></dd></div>
+  <div><dt>When</dt><dd>2026</dd></div>
+  <div><dt>Role</dt><dd>Designer, Developer</dd></div>
+  <div><dt>Teams</dt><dd>Solo project</dd></div>
 </dl>
     <nav>
     <a href="#overview">Overview</a>
     <a href="#problem">Problem</a>
     <a href="#outcome">Outcome</a>
     <a href="#process">Process</a>
-    <a href="#decisions">Decisions</a>
     <a href="#differently">What I'd do differently</a>
     </nav>
   </aside>
   <main>
-<h1>Designing and building a kanban board using only Claude Code</h1>
+<h1>Designing and implementing a kanban board for an IT company in Asunción</h1>
 
 <h2 id="overview">Overview</h2>
+<p class="intro lead">I built a kanban board for an IT company in Asunción, Paraguay tailored to their needs. In my previous jobs I had not been able to use AI in my work. I took on this freelance project to learn more about using it.</p>
+<p class="disclosure">Note: All screens contain test data only.</p>
 
 <h2 id="problem">Problem</h2>
+<p>The company needed more structured handoffs and follow-ups from manager to developers. They were only using verbal communication which led to work getting lost and developers often didn't know the scope of their work. I proposed building a lightweight kanban board as a start to keep track of the work, as well as teaching them how to work with it.</p>
 
 <h2 id="outcome">Outcome</h2>
 
+<figure>
+  <img src="img/board.png" alt="The board: To Do, In Progress, Review and Done columns with their tickets.">
+  <img src="img/ticket.png" alt="A ticket open over the board, with its description, attachments, comments, status, assignee, reviewers, priority, products and estimate.">
+  <img src="img/backlog.png" alt="The backlog: every ticket in one list, with the selected one open beside it.">
+  <figcaption>The final version, after four iterations of customer feedback and feature additions.</figcaption>
+</figure>
+
+<p>The manager and developers reported after a month:</p>
+
+<ul class="plain grid-2 big">
+  <li>Work could now be tracked and was not getting lost since each task has a ticket</li>
+  <li>Handoff was clearer since the manager had to formulate it in text and agree on scope with the developers</li>
+</ul>
+
 <h2 id="process">Process</h2>
 
-<h3 id="goals">Goals and scope</h3>
+<h3 id="mvp">Making an MVP</h3>
+<p>I decided to start with an MVP. I wanted to see what was being used and how, or if it was being used at all. After interviews with the manager of the company I started with the initial version according to their basic needs.</p>
+<p>I then continuously checked in on a weekly basis to see how they were using the board in their work and proposed new features to implement with that in mind.</p>
 
-<h3 id="research">Research</h3>
+<figure>
+  <img src="img/ticket-v1.png" alt="A ticket in the first version: a title, a description, comments, and only status and assignee in the side panel.">
+  <figcaption>MVP version with only minimal features</figcaption>
+</figure>
 
-<h3 id="discoveries">Discoveries</h3>
+<h3 id="workflow">Design and implementation workflow</h3>
+<p>I decided to set up a workflow for my design and implementation like this:</p>
+<ul class="dots">
+  <li>Ideate layouts in plain HTML with coding agent</li>
+  <li>Set up a design system together with coding agent</li>
+  <li>Refine in Figma</li>
+  <li>Export back to coding agent for implementation</li>
+</ul>
 
-<h2 id="decisions">Decisions</h2>
+<figure>
+  <img src="img/design-tokens.png" alt="The design system: colour ramps, type scale, spacing steps, shadows and border radii.">
+  <figcaption>Setting up a design system with the coding agent made using Figma less needed.</figcaption>
+</figure>
 
 <h2 id="differently">What I'd do differently today</h2>
+<p>I quickly realized that for this case Figma was an unnecessary step. In a small solo project where no external design communication is needed, prototyping directly in HTML by giving design feedback directly to the coding agent works quickly and removes a tedious step in the process.</p>
   </main>
 </div>
 </body>
