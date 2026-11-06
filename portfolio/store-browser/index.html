@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<title>Custom convenience store browser</title>
+<style>
+
+  :root{--ink:#111;--ink-soft:#444;--ink-faint:#767676;}
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:#fff;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  p{margin:0 0 2.45rem}
+  .back{font-size:.9375rem;color:var(--ink-soft);
+    text-decoration:underline;text-decoration-color:#bbb;
+    text-underline-offset:3px;text-decoration-thickness:1px}
+  .back:hover{color:var(--ink);text-decoration-color:var(--ink)}
+  .topbar-outer{position:sticky;top:0;z-index:2;background:#fff}
+  .topbar{max-width:72rem;margin:0 auto;padding:1.75rem 32px 1.25rem}
+  /* No sidebar on the side projects: one column, nothing to align against. */
+  .wrap{max-width:44rem;margin:0 auto;padding:2rem 32px 9rem}
+  h1{font-size:2.575rem;line-height:1.12;letter-spacing:-.02em;font-weight:700;
+    margin:0 0 2.5rem}
+  figure{margin:3.5rem 0}
+  figure img{display:block;width:100%;height:auto}
+  /* 80px margin on a 3360px canvas: lines the caption up with the screen
+     rather than with the image's transparent padding. */
+  figcaption{margin-top:.75rem;font-size:.875rem;line-height:1.5;
+    color:var(--ink-faint);padding-left:2.381%}
+  /* The single product card: centred, and smaller than the full column —
+     the crop is only 427px wide and goes soft if it is stretched. */
+  .solo{width:40%;margin:3.5rem auto}
+  /* 20px margin on a 447px canvas, not the 80-on-3360 of the full screens. */
+  .solo figcaption{padding-left:4.474%}
+  .solo figure{margin:0}
+  @media (max-width:640px){.solo{width:80%}}
+  @media (max-width:860px){
+    .topbar{padding:1.25rem 24px 1rem}
+    .wrap{padding:2rem 24px 6rem}
+    h1{font-size:2rem}
+  }
+
+</style>
+</head>
+<body>
+<div class="topbar-outer"><div class="topbar"><a class="back" href="/portfolio/">Back to portfolio</a></div></div>
+<div class="wrap">
+  <main>
+<h1>Custom convenience store browser</h1>
+<p>Biggie has Paraguay's best 24/7 store and delivery service, according to me. Unfortunately the shopping experience on their website is not nearly as good.</p>
+<p>I used their own API to make a better browsing experience, using sub-categories the API already included but weren't used on the site. In a later stage I scraped prices from three local supermarkets to compare with Biggie.</p>
+
+<figure>
+  <img src="img/categories.png" alt="The browser's front page: every product category in a grid, each with its product count.">
+  <figcaption>All product categories now easily accessible.</figcaption>
+</figure>
+
+<figure>
+  <img src="img/sub-categories.png" alt="One category opened, showing its sub-categories and how many products each holds.">
+  <figcaption>The hidden sub-categories now visible and browsable.</figcaption>
+</figure>
+
+<figure>
+  <img src="img/products.png" alt="A sub-category opened: every product in it as a card with image, brand, name and price per kilo.">
+  <figcaption>Overview of all products in sub-category.</figcaption>
+</figure>
+
+<div class="solo">
+<figure>
+  <img src="img/price-compare.png" alt="A product card for La Pradera milk at Gs. 7.150, with a row underneath showing Superseis at Gs. 6.950.">
+  <figcaption>Price compared to another supermarket.</figcaption>
+</figure>
+</div>
+  </main>
+</div>
+</body>
+</html>
