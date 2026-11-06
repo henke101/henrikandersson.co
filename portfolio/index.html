@@ -33,6 +33,8 @@
 
   .section{margin:5rem 0 1.5rem;font-size:26px;line-height:1.2;
     letter-spacing:-.01em;font-weight:700;color:var(--ink)}
+  .section-sub{color:var(--ink-soft);font-size:1.0625rem;line-height:1.5;
+    margin:-1.1rem 0 1.5rem}
   .cards{display:grid;gap:3rem}
   .cards.two{grid-template-columns:1fr 1fr;gap:2rem}
   .collage.blank{aspect-ratio:4/3}
@@ -69,9 +71,10 @@
 <body>
 <main>
   <h1>Henrik Andersson</h1>
-  <p class="role">Senior Product Designer</p>
+  <p class="role">I am a senior product designer who strives to make great, functional products. A former developer until I realized I really enjoy working closer to the end users.</p>
 
   <p class="section">Work</p>
+  <p class="section-sub">A selection of my professional work.</p>
 
   <div class="cards">
     <a class="card" href="traffic-accident-reporting/">
@@ -100,21 +103,22 @@
   </div>
 
   <p class="section">Side projects</p>
+  <p class="section-sub">A selection of software I have built to make my life slightly easier.</p>
 
   <div class="cards two">
-    <a class="card" href="#">
-      <div class="collage blank"></div>
+    <a class="card" href="learn-italian/">
+      <div class="collage"><img src="img/collage-learn-italian.png" draggable="false" alt="Two phones side by side: the section menu and the false friends list."></div>
       <div class="meta">
-        <p class="title">Custom convenience store browser</p>
-        <p class="sub"></p>
+        <p class="title">App to learn Italian as a Spanish speaker</p>
+        <p class="sub">Research, Design, Implementation<br>2026</p>
       </div>
     </a>
 
-    <a class="card" href="#">
-      <div class="collage blank"></div>
+    <a class="card" href="store-browser/">
+      <div class="collage"><img src="img/collage-store-browser.png" draggable="false" alt="The category index and a product list, overlapping."></div>
       <div class="meta">
-        <p class="title">App to learn Italian as a Spanish speaker</p>
-        <p class="sub"></p>
+        <p class="title">Custom convenience store browser</p>
+        <p class="sub">Design, Implementation<br>2026</p>
       </div>
     </a>
   </div>
